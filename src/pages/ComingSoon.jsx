@@ -27,7 +27,7 @@ export default function ComingSoon({ onClose }) {
           <img
             src={img}
             alt={`Heritage of Narmada River and Maheshwar ${index + 1}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover md:object-top object-center"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
@@ -50,15 +50,15 @@ export default function ComingSoon({ onClose }) {
             Coming Soon
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl mb-4 animate-fade-in-up animation-delay-300">
-            Discover the Heritage of Narmada River & Maheshwar
-          </p>
+        <p className="text-xl md:text-2xl mb-4 animate-fade-in-up animation-delay-300">
+  Experience the Heritage of Maheshwar & the Narmada
+</p>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl mb-8 animate-fade-in-up animation-delay-600 max-w-2xl mx-auto">
-            We're curating an extraordinary collection inspired by the timeless beauty and rich cultural heritage of the sacred Narmada River and the historic city of Maheshwar. Stay tuned for our unique handwoven treasures.
-          </p>
+{/* Description */}
+<p className="text-lg md:text-xl mb-8 animate-fade-in-up animation-delay-600 max-w-2xl mx-auto">
+  Inspired by the timeless artistry of Maheshwar and the sacred Narmada, our handwoven sarees celebrate tradition and grace — perfect for weddings, festivities, or everyday elegance.
+</p>
+
 
           {/* Animated Elements */}
           <div className="flex justify-center space-x-4 mb-8 animate-fade-in-up animation-delay-900">
