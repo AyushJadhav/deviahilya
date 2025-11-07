@@ -1,58 +1,78 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Nav(){
   const [isOpen, setIsOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
 
   return (
-    <header style={{backgroundColor: '#7b1e1e', color: '#fff8f0', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'}}>
-      <div style={{maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem'}}>
-        <Link to="/" style={{fontSize: '1.5rem', lineHeight: '2rem', fontWeight: '700', color: '#fff8f0', textDecoration: 'none'}}>
+    <header className="bg-maroon text-cream shadow-lg">
+      <div className="container mx-auto flex items-center justify-between p-4">
+        <Link to="/" className="text-xl md:text-2xl font-bold hover:text-gold transition-colors">
           Devi Ahilya Weavers
         </Link>
 
         {/* Desktop Navigation */}
-        <nav style={{display: 'flex', gap: '1.5rem'}}>
-          <Link to="/" style={{color: '#fff8f0', textDecoration: 'none', padding: '0.5rem 1rem', borderRadius: '0.25rem', transition: 'background-color 0.3s'}} onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(255, 248, 240, 0.1)'} onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}>Home</Link>
-          <Link to="/contact" style={{color: '#fff8f0', textDecoration: 'none', padding: '0.5rem 1rem', borderRadius: '0.25rem', transition: 'background-color 0.3s'}} onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(255, 248, 240, 0.1)'} onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}>Contact</Link>
-          <Link to="/admin/login" style={{backgroundColor: '#d4af37', color: '#7b1e1e', padding: '0.5rem 1rem', borderRadius: '0.25rem', textDecoration: 'none', fontWeight: '500', transition: 'background-color 0.3s'}} onMouseOver={(e) => e.target.style.backgroundColor = '#f5d76e'} onMouseOut={(e) => e.target.style.backgroundColor = '#d4af37'}>
-            Admin
-          </Link>
-        </nav>
+        {!isMobile && (
+          <nav className="flex space-x-4 md:space-x-6">
+            <Link to="/" className="hover:text-gold transition-colors hover:bg-cream hover:bg-opacity-10 px-3 py-2 rounded">
+              Home
+            </Link>
+            <Link to="/contact" className="hover:text-gold transition-colors hover:bg-cream hover:bg-opacity-10 px-3 py-2 rounded">
+              Contact
+            </Link>
+            <Link to="/admin/login" className="bg-gold text-maroon px-3 py-2 rounded hover:bg-yellow-400 transition-colors font-medium">
+              Admin
+            </Link>
+          </nav>
+        )}
 
         {/* Mobile menu button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          style={{display: 'none', color: '#fff8f0', border: 'none', background: 'none', cursor: 'pointer'}}
-          aria-label="Toggle menu"
-        >
-          <svg style={{width: '1.5rem', height: '1.5rem'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-          </svg>
-        </button>
+        {isMobile && (
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-cream hover:text-gold focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div style={{display: 'block', backgroundColor: '#7b1e1e', borderTop: '1px solid #d4af37'}} className="md:hidden">
-          <div style={{padding: '0.5rem'}}>
+      {isMobile && isOpen && (
+        <div className="bg-maroon border-t border-gold">
+          <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               to="/"
-              style={{display: 'block', padding: '0.5rem 0.75rem', color: '#fff8f0', textDecoration: 'none'}}
+              className="block px-3 py-2 text-cream hover:bg-gold hover:bg-opacity-20 rounded transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/contact"
-              style={{display: 'block', padding: '0.5rem 0.75rem', color: '#fff8f0', textDecoration: 'none'}}
+              className="block px-3 py-2 text-cream hover:bg-gold hover:bg-opacity-20 rounded transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Contact
             </Link>
             <Link
               to="/admin/login"
-              style={{display: 'block', padding: '0.5rem 0.75rem', backgroundColor: '#d4af37', color: '#7b1e1e', textDecoration: 'none', fontWeight: '500'}}
+              className="block px-3 py-2 bg-gold text-maroon font-medium rounded hover:bg-yellow-400 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Admin
