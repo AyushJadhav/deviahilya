@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --maroon: #7b1e1e;
+  --gold: #d4af37;
+  --cream: #fff8f0;
+}
+
+.bg-cream{background-color:var(--cream)}
+.text-maroon{color:var(--maroon)}
+.border-gold{border-color:var(--gold)}
+
+/* add any additional styles here */
