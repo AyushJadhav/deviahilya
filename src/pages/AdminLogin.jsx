@@ -26,7 +26,6 @@ export default function AdminLogin(){
         <input type="password" className="w-full border p-2 rounded" value={pw} onChange={e=>setPw(e.target.value)} placeholder="password" />
         <button className="bg-maroon text-cream px-4 py-2 rounded">Sign In</button>
       </form>
-      <p className="mt-3 text-sm">Admin users: create via Firebase console (Auth &rarr; Users)</p>
     </div>
   )
 }
