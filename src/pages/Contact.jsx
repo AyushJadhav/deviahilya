@@ -4,7 +4,7 @@ export default function Contact(){
   return (
     <div className="bg-white p-6 rounded shadow">
       <h2 className="text-2xl font-semibold text-maroon">Contact Us</h2>
-      <p className="mt-2">For orders and enquiries email: <strong>contact@deviahilyaweavers.example</strong> or call +91 98765 43210</p>
+      <p className="mt-2">For orders and enquiries email: <strong>anushreejadhav04@gmail.com</strong> or call <strong>+91 97307 22266</strong></p>
       <form className="mt-4 space-y-3 max-w-md">
         <input className="w-full border p-2 rounded" placeholder="Your name" />
         <input className="w-full border p-2 rounded" placeholder="Email" />
